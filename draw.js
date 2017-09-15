@@ -50,8 +50,11 @@ function mainRender(){
 
 mainRender();
 
-
-
+//This function returns a random color in hex
 function randomColor(){
   return '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)
 }
+
+canvas.addEventListener('click', function(e){
+  particles.push(new Particle(e.clientX,e.clientY,5,randomColor()));
+})
