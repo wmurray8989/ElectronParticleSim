@@ -2,14 +2,27 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var raf;
 
+class Particle {
+  constructor(x,y,r){
+    this.x=x;
+    this.y=y;
+    this.r=r;
+  }
 
-function draw(){
+  draw(){
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.r,0,2*Math.PI);
+    ctx.fill();
+  }
 
-  ctx.beginPath();
-  ctx.arc(100,100,50,0,2*Math.PI);
-  ctx.fill();
-
-  raf = window.requestAnimationFrame(draw);
 }
 
-draw();
+function mainRender(){
+
+  var p = new Particle(100,100,5);
+  p.draw();
+
+  raf = window.requestAnimationFrame(mainRender);
+}
+
+mainRender();
