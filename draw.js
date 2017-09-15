@@ -31,15 +31,14 @@ class Particle {
   }
 }
 
+//Create particles
 var particles = [];
 var NumberOfParticles = 10;
 for (i=0; i<NumberOfParticles; i++){
-  particles.push(new Particle(500*Math.random(),500*Math.random(),5,"#4286f4"));
+  particles.push(new Particle(500*Math.random(),500*Math.random(),5,randomColor()));
 }
 
-
 function mainRender(){
-
   //move each particle then draw it to the canvas
   for (i=0; i<particles.length; i++){
     particles[i].move();
@@ -50,3 +49,9 @@ function mainRender(){
 }
 
 mainRender();
+
+
+
+function randomColor(){
+  return '#'+(0x1000000+(Math.random())*0xffffff).toString(16).substr(1,6)
+}
