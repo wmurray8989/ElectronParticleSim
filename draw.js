@@ -3,14 +3,16 @@ var ctx = canvas.getContext("2d");
 var raf;
 
 class Particle {
-  constructor(x,y,r){
+  constructor(x,y,r,color){
     this.x=x;
     this.y=y;
     this.r=r;
+    this.color=color;
   }
 
   //Draw the particle to the canvas
   draw(){
+    ctx.fillStyle=this.color;
     ctx.beginPath();
     ctx.arc(this.x,this.y,this.r,0,2*Math.PI);
     ctx.fill();
@@ -29,12 +31,16 @@ class Particle {
   }
 }
 
-var p = new Particle(100,100,5);
+var p1 = new Particle(500*Math.random(),500*Math.random(),5,"#4286f4");
+var p2 = new Particle(500*Math.random(),500*Math.random(),5,"#61a832");
 
 function mainRender(){
 
-  p.draw();
-  p.move();
+  p1.draw();
+  p1.move();
+
+  p2.draw();
+  p2.move();
 
   raf = window.requestAnimationFrame(mainRender);
 }
