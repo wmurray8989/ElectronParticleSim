@@ -31,16 +31,20 @@ class Particle {
   }
 }
 
-var p1 = new Particle(500*Math.random(),500*Math.random(),5,"#4286f4");
-var p2 = new Particle(500*Math.random(),500*Math.random(),5,"#61a832");
+var particles = [];
+var NumberOfParticles = 10;
+for (i=0; i<NumberOfParticles; i++){
+  particles.push(new Particle(500*Math.random(),500*Math.random(),5,"#4286f4"));
+}
+
 
 function mainRender(){
 
-  p1.draw();
-  p1.move();
-
-  p2.draw();
-  p2.move();
+  //move each particle then draw it to the canvas
+  for (i=0; i<particles.length; i++){
+    particles[i].move();
+    particles[i].draw();
+  }
 
   raf = window.requestAnimationFrame(mainRender);
 }
