@@ -31,12 +31,8 @@ class Particle {
   }
 }
 
-//Create particles
+//Define array of particles
 var particles = [];
-var NumberOfParticles = 10;
-for (i=0; i<NumberOfParticles; i++){
-  particles.push(new Particle(500*Math.random(),500*Math.random(),5,randomColor()));
-}
 
 function mainRender(){
   //move each particle then draw it to the canvas
