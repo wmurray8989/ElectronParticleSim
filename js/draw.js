@@ -52,5 +52,10 @@ function randomColor(){
 }
 
 canvas.addEventListener('click', function(e){
-  particles.push(new Particle(e.clientX,e.clientY,5,randomColor()));
+
+  var rect = canvas.getBoundingClientRect();
+  var xPos = e.clientX - rect.left;
+  var yPos = e.clientY - rect.top;
+
+  particles.push(new Particle(xPos,yPos,5,randomColor()));
 })
