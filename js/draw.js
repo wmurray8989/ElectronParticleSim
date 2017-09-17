@@ -40,6 +40,9 @@ canvas.addEventListener('click', function(e){
       case "Linear":
           particles.push(new ParticleLinear(xPos,yPos));
           break;
+      case "Jumper":
+          particles.push(new ParticleJumper(xPos,yPos));
+          break;
       case "Clear":
           particles = [];
           break;
