@@ -12,7 +12,7 @@
 
       <!-- .toolbar-header sits at the top of your app -->
       <header class="toolbar toolbar-header">
-        <h1 class="title">Photon</h1>
+        <h1 class="title">Particle Simulation</h1>
       </header>
 
       <!-- Your app's content goes inside .window-content -->
@@ -21,15 +21,15 @@
           <div class="pane pane-sm sidebar">
             <nav class="nav-group">
               <h5 class="nav-group-title">Particles</h5>
-              <span class="nav-group-item active">
+              <span class="nav-group-item active" id="BtnRandom">
                 <span class="icon icon-light-up"></span>
                 Random
               </span>
-              <span class="nav-group-item">
+              <span class="nav-group-item" id="BtnLinear">
                 <span class="icon icon-right-bold"></span>
                 Linear
               </span>
-              <span class="nav-group-item">
+              <span class="nav-group-item" id="BtnClear">
                 <span class="icon icon-block"></span>
                 Clear
               </span>
@@ -43,6 +43,7 @@
       </div>
     </div>
    </body>
+   <script src="js/UI.js"></script>
 	 <script src="js/draw.js"></script>
    <script src="js/particle.js"></script>
 </html>
