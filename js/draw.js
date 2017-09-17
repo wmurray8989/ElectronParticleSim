@@ -38,7 +38,7 @@ canvas.addEventListener('click', function(e){
           particles.push(new ParticleRandom(xPos,yPos));
           break;
       case "Linear":
-          particles.push(new Particle(xPos,yPos,5,randomColor()));
+          particles.push(new ParticleLinear(xPos,yPos));
           break;
       case "Clear":
           particles = [];
