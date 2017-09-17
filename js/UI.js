@@ -6,3 +6,11 @@ for (var i=0; i<NavGroupItems.length; i++){
     this.classList.add("active");
   })
 }
+
+function getActiveSelection(){
+  for (var i=0; i<NavGroupItems.length; i++){
+    if(NavGroupItems[i].classList.contains("active")){
+      return NavGroupItems[i].innerText;
+    }
+  }
+}
