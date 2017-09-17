@@ -1,5 +1,6 @@
 class ParticleJumper extends Particle{ constructor(x,y){
     super(x,y,5,"#0000ff");
+    this.type="Jumper";
   }
 
   //Move the particle randomly
