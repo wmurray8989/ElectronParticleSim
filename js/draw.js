@@ -6,6 +6,8 @@ var raf;
 var particles = [];
 
 function mainRender(){
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
   //move each particle then draw it to the canvas
   for (i=0; i<particles.length; i++){
     particles[i].move();
