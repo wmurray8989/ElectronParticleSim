@@ -35,7 +35,7 @@ canvas.addEventListener('click', function(e){
 
   switch(getActiveSelection()) {
       case "Random":
-          particles.push(new Particle(xPos,yPos,5,randomColor()));
+          particles.push(new ParticleRandom(xPos,yPos));
           break;
       case "Linear":
           particles.push(new Particle(xPos,yPos,5,randomColor()));
