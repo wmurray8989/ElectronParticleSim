@@ -12,8 +12,7 @@ function mainRender(){
 
   //move each particle then draw it to the canvas
   for (i=0; i<particles.length; i++){
-    particles[i].move();
-    particles[i].draw();
+    particles[i].update();
   }
 
   raf = window.requestAnimationFrame(mainRender);
