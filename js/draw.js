@@ -6,6 +6,8 @@ var raf;
 var particles = [];
 
 function mainRender(){
+
+  //Clear the canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   //move each particle then draw it to the canvas
@@ -25,10 +27,21 @@ function randomColor(){
 }
 
 canvas.addEventListener('click', function(e){
+  console.log(getActiveSelection());
 
   var rect = canvas.getBoundingClientRect();
   var xPos = e.clientX - rect.left;
   var yPos = e.clientY - rect.top;
 
-  particles.push(new Particle(xPos,yPos,5,randomColor()));
+  switch(getActiveSelection()) {
+      case "Random":
+          particles.push(new Particle(xPos,yPos,5,randomColor()));
+          break;
+      case "Linear":
+          particles.push(new Particle(xPos,yPos,5,randomColor()));
+          break;
+      case "Clear":
+          particles = [];
+          break;
+  }
 })
