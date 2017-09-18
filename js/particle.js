@@ -10,6 +10,7 @@ class Particle {
     this.move();
     this.bound();
     this.draw();
+    this.interact();
   }
 
   move(){
@@ -32,5 +33,19 @@ class Particle {
     ctx.fill();
   }
 
+  interact(){
+    
+  }
 
+
+  isCollision(otherParticle){
+    var distX=Math.abs(this.x-otherParticle.x);
+    var distY=Math.abs(this.y-otherParticle.y);
+    var distSquare=distX*distX + distY*distY;
+    if (distSquare<this.r*this.r){
+      return true;
+    }else {
+      return false;
+    }
+  }
 }
