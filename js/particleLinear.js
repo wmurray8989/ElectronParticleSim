@@ -13,4 +13,5 @@ class ParticleLinear extends Particle{
     this.x+=this.xVel;
     this.y+=this.yVel;
   }
+
 }

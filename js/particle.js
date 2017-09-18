@@ -10,7 +10,6 @@ class Particle {
     this.move();
     this.bound();
     this.draw();
-    this.interact();
   }
 
   move(){
@@ -32,11 +31,6 @@ class Particle {
     ctx.arc(this.x,this.y,this.r,0,2*Math.PI);
     ctx.fill();
   }
-
-  interact(){
-    
-  }
-
 
   isCollision(otherParticle){
     var distX=Math.abs(this.x-otherParticle.x);
