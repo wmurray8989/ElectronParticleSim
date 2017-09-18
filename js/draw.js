@@ -11,8 +11,22 @@ function mainRender(){
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   //move each particle then draw it to the canvas
-  for (i=0; i<particles.length; i++){
+  for (let i=0; i<particles.length; i++){
     particles[i].update();
+
+    //check for particle collisions
+    for (let j=0; j<particles.length; j++){
+      if (i!=j){
+        if(particles[i].isCollision(particles[j])){
+          if (particles[i].type=="Random" && particles[j].type=="Random"){
+            collisionX = (particles[i].x + particles[j].x) / 2;
+            collisionY = (particles[i].y + particles[j].y) / 2;
+            particles[i] = new ParticleLinear(collisionX,collisionY);
+            particles[j] = new ParticleLinear(collisionX,collisionY);
+          }
+        }
+      }
+    }
   }
 
   raf = window.requestAnimationFrame(mainRender);
@@ -26,7 +40,6 @@ function randomColor(){
 }
 
 canvas.addEventListener('click', function(e){
-  console.log(getActiveSelection());
 
   var rect = canvas.getBoundingClientRect();
   var xPos = e.clientX - rect.left;
