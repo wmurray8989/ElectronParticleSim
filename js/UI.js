@@ -1,4 +1,4 @@
-var NavGroupItems = document.getElementsByClassName("nav-group-item");
+var NavGroupItems = document.getElementsByClassName("create-particle");
 
 for (var i=0; i<NavGroupItems.length; i++){
   NavGroupItems[i].addEventListener('click', function(e){
