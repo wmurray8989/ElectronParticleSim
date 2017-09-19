@@ -6,8 +6,8 @@ class ParticleJumper extends Particle{ constructor(x,y){
   //Move the particle randomly
   move(){
     if (Math.random()<0.01){
-      this.x+=50*Math.random()-25;
-      this.y+=50*Math.random()-25;
+      this.x+=100*Math.random()-50;
+      this.y+=100*Math.random()-50;
     }
   }
 }
