@@ -8,7 +8,13 @@ var particles = [];
 function mainRender(){
 
   //Clear the canvas
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  //ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  ctx.globalAlpha = 0.1;
+  ctx.fillStyle="#000000";
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.globalAlpha = 1.0;
+
 
   //move each particle then draw it to the canvas
   for (let i=0; i<particles.length; i++){
