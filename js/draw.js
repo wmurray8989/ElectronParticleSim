@@ -19,32 +19,6 @@ function mainRender(){
   //move each particle then draw it to the canvas
   for (let i=0; i<particles.length; i++){
     particles[i].update();
-
-    //check for particle collisions
-    for (let j=0; j<particles.length; j++){
-      if (i!=j){
-        if(particles[i].isCollision(particles[j])){
-          collisionX = (particles[i].x + particles[j].x) / 2;
-          collisionY = (particles[i].y + particles[j].y) / 2;
-
-          if (particles[i].type=="Random" && particles[j].type=="Linear"){
-            particles[i] = new ParticleJumper(collisionX,collisionY);
-            particles[j] = new ParticleJumper(collisionX,collisionY);
-          }
-
-          if (particles[i].type=="Linear" && particles[j].type=="Jumper"){
-            particles[i] = new ParticleRandom(collisionX,collisionY);
-            particles[j] = new ParticleRandom(collisionX,collisionY);
-          }
-
-          if (particles[i].type=="Jumper" && particles[j].type=="Random"){
-            particles[i] = new ParticleLinear(collisionX,collisionY);
-            particles[j] = new ParticleLinear(collisionX,collisionY);
-          }
-
-        }
-      }
-    }
   }
 
   raf = window.requestAnimationFrame(mainRender);
