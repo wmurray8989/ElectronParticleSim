@@ -36,38 +36,49 @@ class Particle {
   }
 
   interact(){
-    //check for particle collisions
+    //loop through all particles except self for interactions
     for (let i=0; i<particles.length; i++){
       var ownIndex = particles.indexOf(this);
-
       if (i != ownIndex){
+
+        //check if particle collision has occured
         if(this.isCollision(particles[i])){
-          console.log(ownIndex+ " Collision with "+ i);
-
-          var collisionX = (this.x + particles[i].x) / 2;
-          var collisionY = (this.y + particles[i].y) / 2;
-
-          if (this.type=="Random" && particles[i].type=="Linear"){
-            particles[ownIndex] = new ParticleJumper(collisionX,collisionY);
-            particles[i] = new ParticleJumper(collisionX,collisionY);
-          }
-
-          if (this.type=="Linear" && particles[i].type=="Jumper"){
-            particles[ownIndex] = new ParticleRandom(collisionX,collisionY);
-            particles[i] = new ParticleRandom(collisionX,collisionY);
-          }
-
-          if (this.type=="Jumper" && particles[i].type=="Random"){
-            particles[ownIndex] = new ParticleLinear(collisionX,collisionY);
-            particles[i] = new ParticleLinear(collisionX,collisionY);
-          }
+          this.collide(ownIndex,i);
         }
+
+
+
       }
     }
   }
 
+  collide(ownIndex,i){
+    var collisionX = (this.x + particles[i].x) / 2;
+    var collisionY = (this.y + particles[i].y) / 2;
+
+    if (this.type=="Random" && particles[i].type=="Random"){
+      particles[ownIndex] = new ParticleLinear(collisionX,collisionY);
+      particles[i] = new ParticleLinear(collisionX,collisionY);
+      particles.push(new ParticleJumper(collisionX,collisionY))
+    }
+
+    if (this.type=="Linear" && particles[i].type=="Jumper"){
+      particles[ownIndex] = new ParticleRandom(collisionX,collisionY);
+      particles[i] = new ParticleRandom(collisionX,collisionY);
+    }
+
+    if (this.type=="Jumper" && particles[i].type=="Random"){
+      particles[ownIndex] = new ParticleLinear(collisionX,collisionY);
+      particles[i] = new ParticleLinear(collisionX,collisionY);
+    }
+
+    if (this.type=="Linear" && particles[i].type=="Linear"){
+      particles.splice(i,1);
+    }
+  }
+
   isCollision(otherParticle){
-    if (this.age>100){
+    if (this.age>60){
       var distX=Math.abs(this.x-otherParticle.x);
       var distY=Math.abs(this.y-otherParticle.y);
       var distSquare=distX*distX + distY*distY;
